@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Component Regstration</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <style>
+        #app,
+        #second-app {
+            width: 100%;
+            height: 300px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button>컴포넌트 등록</button>
+        <my-component></my-component>
+    </div>
+
+    <div id="second-app">
+        <button>컴포넌트 등록</button>
+        <local-component></local-component>
+    </div>
+
+    <script>
+        // 전역 컴포넌트 선언
+        Vue.component('my-component', {
+            template: '<div>전역 컴포넌트가 등록되었습니다</div>'
+        });
+
+        new Vue({
+            el: '#app'
+        });
+
+        // 지역 컴포넌트 내용 
+        var cmp = {
+            template: '<div>지역 컴포넌트가 등록되었습니다</div>'
+        };
+
+        new Vue({
+            el: '#second-app',
+            components: {
+                'local-component': cmp
+            }
+        });
+
+    </script>
+</body>
+
+</html>
