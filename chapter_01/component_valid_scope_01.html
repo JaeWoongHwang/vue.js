@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Component Valid Scope</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-component01></my-component01>
+        <my-component02></my-component02>
+    </div>
+
+    <script>
+        // First Component Content
+        var cmp1 = {
+            template: '<div>First scope component : {{cmp1data}}</div>',
+            data: function () {
+                return {
+                    cmp1data: 100
+                }
+            }
+        };
+
+        // Second Component Content
+        var cmp2 = {
+            template: '<div>Second scope component : {{cmp2data}}</div>',
+            data: function () {
+                return {
+                    cmp2data: cmp1.data.cmp1data
+                }
+            }
+        };
+
+        new Vue({
+            el: "#app",
+            // Regist Local Component
+            components: {
+                'my-component01': cmp1,
+                'my-component02': cmp2
+            }
+        });
+
+    </script>
+</body>
+
+</html>
