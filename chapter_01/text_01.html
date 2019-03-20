@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue First Chapter test 01</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <style>
+        #content-wrapper {
+            width: 100%;
+            height: 300px;
+            background-color: #f7f7f7;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content-wrapper">
+        <header>
+            <h3>{{message}}</h3>
+        </header>
+        <todo-footer></todo-footer>
+        <todo-list></todo-list>
+
+    </div>
+
+    <script>
+        Vue.component('todo-footer', {
+            template: '<p>This is another global child component</p>'
+        })
+
+        var cmp = {
+            template: '<p>This is another local child component</p>'
+        }
+
+        var app = new Vue({
+            el: '#content-wrapper',
+            data: {
+                message: 'This is a parent component'
+            },
+            components: {
+                'todo-list': cmp
+            }
+        })
+
+    </script>
+</body>
+
+</html>
