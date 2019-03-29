@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Component Valid Scope</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--Fourth Step(Deliver message value) -->
+        <child-component v-bind:propsdata="message"></child-component>
+    </div>
+
+    <script>
+        // Second Step (Regist child-component)
+        Vue.component('child-component', {
+            // Third Step (Define props)
+            props: ['propsdata'],
+            // Fifth Step (Show)
+            template: '<h1>{{propsdata}}</h1>'
+        });
+
+        // First Step (Create Instance)
+        new Vue({
+            el: '#app',
+            data: {
+                message: "Review Vue Component Valide Scope"
+            }
+        });
+    </script>
+</body>
+
+</html>
