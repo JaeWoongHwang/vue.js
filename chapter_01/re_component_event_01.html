@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component Event</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <style>
+        .com_area {
+            width: 100%;
+            height: 300px;
+            background-color: #f7f7f7;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="com_area">
+        <!--Third Step (Deliver show-log Event)-->
+        <child-component v-on:show-log="printText"></child-component>
+    </div>
+
+
+    <script>
+        Vue.component('child-component', {
+            // First Step (Add Button)
+            template: '<button v-on:click="showLog">show</button>',
+            // Second Step (Define Method)
+            methods: {
+                showLog: function () {
+                    this.$emit('show-log');
+                }
+            }
+        });
+
+        // Final Step (Execute Instance)
+        var app = new Vue({
+            el: ".com_area",
+            data: {
+                message: 'Hello Vue! passed from Parent Component!'
+            },
+            methods: {
+                printText: function () {
+                    console.log("received an event");
+                }
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
