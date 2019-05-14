@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Templates Quiz</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h3>
+                {{message}},
+                {{todo}}
+            </h3>
+        </header>
+        <section>
+            <p v-bind:id="uid"></p>
+            <button v-on:click="clickBtn">clickBtn</button>
+            <button v-on:click="eventMethod">eventMethod</button>
+
+            <ul v-if="flag">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </section>
+    </div>
+
+
+    <script src=" https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"> </script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello, Vue.js!",
+                todo: "Learn Vue.js",
+                uid: "20",
+                flag: true
+            },
+            methods: {
+                clickBtn: function () {
+                    console.log("Occured clickBtn()");
+                },
+                // Same Code
+                // clickBtn(){
+                //   console.log("Hi");
+                // }
+
+                eventMethod: function () {
+                    console.log("Occured eventMethod()")
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
